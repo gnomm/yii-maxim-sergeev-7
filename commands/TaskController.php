@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use Yii;
 use app\models\tables\Tasks;
 use app\models\tables\Users;
 use yii\console\Controller;
@@ -36,28 +37,7 @@ class TaskController extends Controller
 
     public function actionDeadline()
     {
-
-        $dateNow = date('Y-m-d');
-        $date = date('Y-m-d', strtotime('+1 days'));
-
-        $dateDeadline = Tasks::find()
-            ->where(['date' => $date])
-            ->all();
-
-        foreach ($dateDeadline as $value) {
-            $userEmail = Tasks::getUserEmail2($value['user_id']);
-
-            \Yii::$app->mailer->compose()
-                ->setTo($userEmail->user->email)
-                ->setFrom(\Yii::$app->params['adminEmail'])
-                ->setSubject('test')
-                ->setTextBody('123')
-                ->send();
-//            var_dump($userEmail->user->email);
-
-        }
-
-//        var_dump($user);
+        Tasks::getConsoleDeadline();
     }
 
 

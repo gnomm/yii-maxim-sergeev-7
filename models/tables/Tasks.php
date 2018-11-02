@@ -6,6 +6,7 @@ use app\events\SentTaskMailEvent;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\Console;
 use yii\helpers\Url;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
@@ -19,11 +20,9 @@ use yii\base\Model;
  * @property string $description
  * @property string $date
  * @property int $user_id
-
  * @property Users $user
- *  @var $image UploadedFile
+ * @var $image UploadedFile
  * */
-
 class Tasks extends \yii\db\ActiveRecord
 {
 
@@ -144,5 +143,40 @@ class Tasks extends \yii\db\ActiveRecord
                 ->save(\Yii::getAlias('@webroot/uploadImg/small/' . $basename));
         }
         return false;
+    }
+
+
+    public static function getConsoleDeadline()
+    {
+        $message = 'deadline on the nose';
+
+        $dateDeadline = Tasks::find()
+            ->where('date')
+            ->all();
+
+        $count = count($dateDeadline); // количество всех действий
+        $i = 0; // счетчик отправленных писем
+
+        Console::startProgress(1, $count);
+        foreach ($dateDeadline as $value) {
+            $date = strtotime($value['date']);
+            $days = ($date - time()) / 86400;
+
+            if ($days <= 1 && $days >= 0) {
+                $i++;
+//                var_dump($days);
+                Console::updateProgress($i, $count);
+                $userEmail = Tasks::getUserEmail2($value['user_id']);
+
+                Yii::$app->mailer->compose()
+                    ->setTo($userEmail->user->email)
+                    ->setFrom(Yii::$app->params['adminEmail'])
+                    ->setSubject('Deadline '  . $value['name'])
+                    ->setTextBody($message)
+                    ->send();
+            }
+        }
+        Console::endProgress(0);
+        echo 'отправлено';
     }
 }

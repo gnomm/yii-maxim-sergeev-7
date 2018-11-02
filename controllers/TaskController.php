@@ -102,22 +102,31 @@ class TaskController extends Controller
 
     public function actionTest()
     {
+
+//        $dateDeadline = Tasks::find()
+////            ->where('date')
+//            ->all();
+//
+//
+//        foreach ($dateDeadline as $value) {
+//            var_dump($value['date']);
+//        }
 //       \Yii::$app->language = "en";
 //        echo \Yii::t("app", 'error', ['error_code' => 404]);
 //        exit;
 
-        $model = new Test();
-        if (\Yii::$app->request->isPost) {
-            $model->load(Yii::$app->request->post());
-            $model->image = UploadedFile::getInstance($model, 'image');
-            $model->upload();
-//            var_dump( $model->upload());
-//            exit;
-//            var_dump($model);
-        }
-
-        return $this->render('test', ['model' => $model]);
-//        exit;
+//        $model = new Test();
+//        if (\Yii::$app->request->isPost) {
+//            $model->load(Yii::$app->request->post());
+//            $model->image = UploadedFile::getInstance($model, 'image');
+//            $model->upload();
+////            var_dump( $model->upload());
+////            exit;
+////            var_dump($model);
+//        }
+//
+//        return $this->render('test', ['model' => $model]);
+////        exit;
 
 
 //        $user = new Users();

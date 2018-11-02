@@ -73,6 +73,7 @@ $config = [
             'rules' => [
                 'task' => 'task/index',
                 'task/<id>' => 'task/view',
+//                'task/test/<id>' => 'task/test',
                 'task/update/<id>' => 'task/update',
                 'task/create/<id>' => 'task/create',
                 'task/delete/<id>' => 'task/delete',
