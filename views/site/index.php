@@ -12,7 +12,8 @@ $this->title = 'My Yii Application';
 <!--        <p class="lead">You have successfully created your Yii-powered application.</p>-->
         <p class="lead">Теперь ты можешь просматривать свои задачи</p>
 
-        <p><a class="btn btn-lg btn-success" href="/?r=task">Твой задачи</a></p>
+        <?= \yii\helpers\Html::a('Твои задачи', ['task/'], ['class' => 'btn btn-lg btn-success'])?>
+<!--        <p><a class="btn btn-lg btn-success" href="/?r=task">Твой задачи</a></p>-->
     </div>
 
     <div class="body-content">

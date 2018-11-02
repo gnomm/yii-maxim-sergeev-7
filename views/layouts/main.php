@@ -41,7 +41,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => Yii::t("appLayoutsMain", "home"), 'url' => ['/site/index']],
-            ['label' => Yii::t("appLayoutsMain", "tasks"), 'url' => ['/task/index']],
+            ['label' => Yii::t("appLayoutsMain", "tasks"), 'url' => ['/task/']],
             ['label' => Yii::t("appLayoutsMain", "about"), 'url' => ['/site/about']],
             ['label' => Yii::t("appLayoutsMain", "contact"), 'url' => ['/site/contact']],
 

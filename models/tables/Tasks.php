@@ -123,6 +123,16 @@ class Tasks extends \yii\db\ActiveRecord
             ->one();
     }
 
+
+    public static function getUserEmail2($id)
+    {
+        return static::find()
+            ->where(['user_id' => $id])
+            ->with('user')
+            ->one();
+    }
+
+
     public function upload()
     {
         if ($this->validate()) {

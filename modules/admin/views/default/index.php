@@ -13,6 +13,7 @@
 
 <h2>Администрирование</h2>
 
-<a href="?r=admin/task">Task</a><br>
-<a href="?r=admin/roles">Roles</a><br>
-<a href="?r=admin/users">Users</a><br>
+<p><?= \yii\helpers\Html::a('Task', ['task/'])?></p>
+<p><?= \yii\helpers\Html::a('Roles', ['roles/'])?></p>
+<p><?= \yii\helpers\Html::a('Users', ['users/'])?></p>
+

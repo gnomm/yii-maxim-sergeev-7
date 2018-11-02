@@ -64,19 +64,22 @@ $config = [
             ],
         ],
         'urlManager' => [
-//            'showScriptName' => false, //отключаем r=routes
-//            'enablePrettyUrl' => true, //отключаем index.php
+            'showScriptName' => false, //отключаем r=routes
+            'enablePrettyUrl' => true, //отключаем index.php
 //            'enableStrictParsing' => true,
-//            'enablePrettyUrl' => true,
-//            'showScriptName' => true,
-//            'enableStrictParsing' =>false,
             'class' => 'codemix\localeurls\UrlManager',
             'languages' => ['en', 'ru'],
-//            'enableDefaultLanguageUrlCode' => true,
+            'enableDefaultLanguageUrlCode' => true,
             'rules' => [
-//                '/' => 'post/index', //для главной страницы
-//                'page/<view:[a-zA-Z0-9-]+>' => 'site/page',
-//                '/' => 'site/default/index'
+                'task' => 'task/index',
+                'task/<id>' => 'task/view',
+                'task/update/<id>' => 'task/update',
+                'task/create/<id>' => 'task/create',
+                'task/delete/<id>' => 'task/delete',
+//                'GET single/<id>' => 'task/view',
+//                'PUT single/<id>' => 'task/create',
+//                'POST single/<id>' => 'task/update',
+//                'DELETE single/<id>' => 'task/delete',
 
             ],
         ],
